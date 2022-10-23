@@ -14,8 +14,12 @@
         // 2 创建react元素
         // 参数一：元素名称
         // 参数二：元素属性
-        // 参数三：元素子节点
-        const title = React.createElement('h2', null, 'Hello React')
+        // 第三个及其以后的参数：元素子节点
+        const title = React.createElement('p',
+            {title: '我是标题', id:'p1'},
+            'Hello React',
+            React.createElement('span', null, '我是span节点')
+        )
 
 
         // 3 渲染react元素
