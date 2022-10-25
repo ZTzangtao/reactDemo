@@ -17,3 +17,19 @@ this is a demo for react test
         yarn是Facebook发布的包管理器，可以看做是npm的替代品，功能与npm相同
         安装包 yarn add
         安装项目依赖项：yarn
+
+##JSX简介
+    JSX是JavaScript XML的简写，表示在JavaScript代码中写XML（HTML）格式的代码
+    优势：声明式语法更加直观、与HMTL结构相似，降低了学习成本、提升开发效率
+__JSX是React的核心内容__
+    
+##创建组建方式
+    使用函数创建组件
+        函数组件名称必须以大写字母开头
+        函数组件必须有返回值，表示该组件的结构
+        如果返回值为null，表示不渲染任何内容
+    使用类创建组件
+        类名称必须以大写字母开头
+        类组件应该继承React.Component父类，从而可以使用父类中提供的方法或属性
+        类组件必须提供render()方法
+        render()必须有返回值，表示该组件的结构
