@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import ReactDOM from 'react-dom'
 //引入css
 import './css/index.css'
+import Hello from "./Hello";
 
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
@@ -80,15 +81,15 @@ import './css/index.css'
 /*
     类组件
  */
-class Hello extends React.Component {
-    render() {
-        return (
-            <div>
-                这是我的第一个类组件
-            </div>
-        );
-    }
-}
+// class Hello extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 这是我的第一个类组件
+//             </div>
+//         );
+//     }
+// }
 
 // 渲染React元素
 // new
