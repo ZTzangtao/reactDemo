@@ -6,7 +6,8 @@ import ReactDOM from 'react-dom'
 //引入css
 import './css/index.css'
 import Hello from "./Hello";
-import Index from "./js";
+import ControlledComponent from "./js/controlledComponent";
+import NonControlledComponent from "./js/nonControlledComponent"
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -95,7 +96,7 @@ import Index from "./js";
 // new
 const container = document.getElementById('root')
 const root = createRoot(container)
-root.render(<Index />)
+root.render(<NonControlledComponent />)
 
 // no longer supported
 // ReactDOM.render(list, document.getElementById('root'))

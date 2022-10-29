@@ -1,6 +1,9 @@
 # reactDemo
 this is a demo for react test
 https://www.bilibili.com/video/BV14y4y1g7M4?p=1&vd_source=4c152a79323ff566b857cd6c07e0dd4b
+素材下载地址： 已经更新数据库
+链接：https://pan.baidu.com/s/1rAylbjRUh4rTgVwxRLfDeQ
+提取码：2gdv
 ##note
 1、初始化项目，命令：npx create-react-app my-app
 2、项目启动，在项目根目录执行命令： npm start
@@ -101,3 +104,18 @@ __JSX是React的核心内容__
         1. 给表单元素添加name属性，名称与state相同
         2. 根据表单元素类型获取对应值
         3. 在change事件处理程序中通过[name]来修改对应的state
+### 非受控组件
+    说明：借助于ref，使用原生DOM方式来获取表单元素值
+    ref的作用：获取DOM或组件
+    使用步骤：
+    1. 调用React.createRef()方法创建一个ref对象
+    2. 将创建好的ref对象添加到文本框中
+    3. 通过ref对象获取到文本框的值
+
+## React组件基础
+    1. 组件的两种创建方式：函数组件和类组件
+    2. 无状态（函数）组件，负责静态结构展示
+    3. 有状态（类）组件，负责更新UI，让页面动起来
+    4. 绑定事件注意this指向问题
+    5. 推荐使用受控组件来处理表单
+    6. 完全利用JS语言的能力创建组件，这是React的思想
