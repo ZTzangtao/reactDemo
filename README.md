@@ -1,7 +1,6 @@
 # reactDemo
 this is a demo for react test
-
-
+https://www.bilibili.com/video/BV14y4y1g7M4?p=1&vd_source=4c152a79323ff566b857cd6c07e0dd4b
 ##note
 1、初始化项目，命令：npx create-react-app my-app
 2、项目启动，在项目根目录执行命令： npm start
@@ -80,3 +79,25 @@ __JSX是React的核心内容__
     1. 推荐：使用class的实例方法
     2. 箭头函数
     3. bind方法
+
+## 表单处理
+    受控组件
+    HTML中的表单元素是可输入的，也就是有自己的可变状态
+    而，React中可变的状态通常保存在state中，并且只能通过setState()方法来修改
+    React将state与表单元素值value绑定到一起，由state的值来控制表单元素的值
+    受控组件:其值受到React控制的表单元素
+
+### 受控组件
+    步骤：
+        1. 在state中添加一个状态，作为表单元素的value值(控制表单元素值的来源)
+        2. 给表单元素绑定change事件，将表单元素的值设置为state的值(控制表单元素值的变化)
+    示例总结：
+        1. 文本框、富文本框、下拉框 操作value属性
+        2. 复选框 操作checked属性
+    多表单元素优化：
+        问题：每个表单元素都有一个单独的事件处理程序处理太繁琐
+        优化：使用一个事件处理程序同时处理多个表单元素
+    多表单元素优化步骤：
+        1. 给表单元素添加name属性，名称与state相同
+        2. 根据表单元素类型获取对应值
+        3. 在change事件处理程序中通过[name]来修改对应的state
