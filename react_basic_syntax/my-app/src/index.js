@@ -9,6 +9,10 @@ import Hello from "./Hello";
 import ControlledComponent from "./js/controlledComponent";
 import NonControlledComponent from "./js/nonControlledComponent"
 import BasedOnPractice from "./js/basedOnPractice";
+import PropsDemo from "./js/propsDemo"
+import ParentDemo from "./js/parentDemo";
+import ChildDemo from "./js/childDemo";
+
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -97,7 +101,18 @@ import BasedOnPractice from "./js/basedOnPractice";
 // new
 const container = document.getElementById('root')
 const root = createRoot(container)
-root.render(<BasedOnPractice />)
+// root.render(<BasedOnPractice />)
+// root.render(<ParentDemo />)
+root.render(<ChildDemo />)
+// 传递数据
+// root.render(<PropsDemo name="jack" age={19}
+//                        // 传递数组
+//                        colors={['red', 'green', 'blue']}
+//                        // 传递函数
+//                        fn={()=>{console.log('这是一个函数')}}
+//                        // 传递jsx
+//                        tag={<p>这是一个p标签</p>}
+// />)
 
 // no longer supported
 // ReactDOM.render(list, document.getElementById('root'))
