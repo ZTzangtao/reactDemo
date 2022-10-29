@@ -13,6 +13,7 @@ import PropsDemo from "./js/propsDemo"
 import ParentDemo from "./js/parentDemo";
 import ChildDemo from "./js/childDemo";
 import Counter from "./js/counter";
+import ContextDemo from "./js/contextDemo";
 
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
@@ -105,7 +106,8 @@ const root = createRoot(container)
 // root.render(<BasedOnPractice />)
 // root.render(<ParentDemo />)
 // root.render(<ChildDemo />)
-root.render(<Counter />)
+// root.render(<Counter />)
+root.render(<ContextDemo />)
 
 // 传递数据
 // root.render(<PropsDemo name="jack" age={19}

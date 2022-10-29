@@ -171,3 +171,10 @@ __JSX是React的核心内容__
     使用步骤：
     1. 调用React.createContext()创建Provider（提供数据）和Consumer（消费数据）两个组件
     2. 使用Provider组件作为父节点
+    3. 设置value属性，表示要传递的数据
+    4. 调用Consumer组件接收数据
+    总结：
+    1. 如果两个组件是远方亲戚（比如，嵌套多层）可以使用Context实现组件通讯
+    2. Context提供了两个组件：Provider和Consumer
+    3. Provider组件：用来提供数据
+    4. Consumer组件：用来消费数据
