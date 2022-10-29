@@ -8,6 +8,7 @@ import './css/index.css'
 import Hello from "./Hello";
 import ControlledComponent from "./js/controlledComponent";
 import NonControlledComponent from "./js/nonControlledComponent"
+import BasedOnPractice from "./js/basedOnPractice";
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -96,7 +97,7 @@ import NonControlledComponent from "./js/nonControlledComponent"
 // new
 const container = document.getElementById('root')
 const root = createRoot(container)
-root.render(<NonControlledComponent />)
+root.render(<BasedOnPractice />)
 
 // no longer supported
 // ReactDOM.render(list, document.getElementById('root'))
