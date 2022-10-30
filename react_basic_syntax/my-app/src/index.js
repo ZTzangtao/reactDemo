@@ -14,7 +14,7 @@ import ParentDemo from "./js/parentDemo";
 import ChildDemo from "./js/childDemo";
 import Counter from "./js/counter";
 import ContextDemo from "./js/contextDemo";
-
+import ChildrenDemo from "./js/childernDemo"
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -99,6 +99,11 @@ import ContextDemo from "./js/contextDemo";
 //     }
 // }
 
+// const Test = () =>{
+//        return <button>我是button组件</button>
+// }
+
+
 // 渲染React元素
 // new
 const container = document.getElementById('root')
@@ -107,7 +112,12 @@ const root = createRoot(container)
 // root.render(<ParentDemo />)
 // root.render(<ChildDemo />)
 // root.render(<Counter />)
-root.render(<ContextDemo />)
+// root.render(<ContextDemo />)
+root.render(<ChildrenDemo>
+    {() => console.log('这是一个函数节点')}
+        {/*<Test/>*/}
+        {/*<p>我是子节点，是一个p标签</p>*/}
+</ChildrenDemo>)
 
 // 传递数据
 // root.render(<PropsDemo name="jack" age={19}

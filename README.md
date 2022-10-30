@@ -178,3 +178,7 @@ __JSX是React的核心内容__
     2. Context提供了两个组件：Provider和Consumer
     3. Provider组件：用来提供数据
     4. Consumer组件：用来消费数据
+
+## children属性
+    children属性：表示组件组件标签的子节点，当组件标签有子节点时，props就会有该属性
+    children属性与普通props一样，值可以是任意值（文本、React元素、组件，甚至是函数）
