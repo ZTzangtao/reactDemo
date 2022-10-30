@@ -182,3 +182,17 @@ __JSX是React的核心内容__
 ## children属性
     children属性：表示组件组件标签的子节点，当组件标签有子节点时，props就会有该属性
     children属性与普通props一样，值可以是任意值（文本、React元素、组件，甚至是函数）
+
+## props校验
+    对于组件来说，props是外来的，无法保证组件使用者传入什么格式的数据
+    如果传入的数据格式不对，可能会导致组件内部报错
+    关键问题：组件的使用者不知道明确的错误原因
+    props校验：允许在创建组件的时候，就指定props的类型、格式等
+    作用：捕获使用组件时因为props导致的错误，给出明确的错误提示，增加组件的健壮性
+    使用步骤
+    1. 安装包 prop-types（yarn add prop-types/npm i props-types）
+    2. 导入prop-types包
+    3. 使用组件名 .propTypes={}来给组件的props添加校验规则
+    4. 校验规则通过PropTypes对象来指定
+
+    

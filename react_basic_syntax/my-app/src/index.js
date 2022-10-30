@@ -1,5 +1,6 @@
 // 1 导入react
 
+
 import React from 'react'
 import { createRoot } from "react-dom/client";
 import ReactDOM from 'react-dom'
@@ -15,6 +16,7 @@ import ChildDemo from "./js/childDemo";
 import Counter from "./js/counter";
 import ContextDemo from "./js/contextDemo";
 import ChildrenDemo from "./js/childernDemo"
+import PropsValidDemo from "./js/propsValidDemo"
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -113,11 +115,12 @@ const root = createRoot(container)
 // root.render(<ChildDemo />)
 // root.render(<Counter />)
 // root.render(<ContextDemo />)
-root.render(<ChildrenDemo>
-    {() => console.log('这是一个函数节点')}
-        {/*<Test/>*/}
-        {/*<p>我是子节点，是一个p标签</p>*/}
-</ChildrenDemo>)
+root.render(<PropsValidDemo colors={['red','blue']} />)
+// root.render(<ChildrenDemo>
+//     {() => console.log('这是一个函数节点')}
+//         {/*<Test/>*/}
+//         {/*<p>我是子节点，是一个p标签</p>*/}
+// </ChildrenDemo>)
 
 // 传递数据
 // root.render(<PropsDemo name="jack" age={19}
