@@ -13,6 +13,23 @@ const PropsValidDemo = (props) => {
 }
 // 添加props校验
 PropsValidDemo.propTypes = {
+    // 属性 a 的类型：数值（number）
+    a: PropTypes.number,
+
+    // 属性 fn 的类型：函数（func）并且为必填项
+    fn: PropTypes.func.isRequired,
+
+    // 属性 tag 的类型：React元素（element）
+    tag: PropTypes.element,
+
+    // 属性 filter 的类型：对象（{area: '上海', price: 1999})
+    filter: PropTypes.shape({
+        area: PropTypes.string,
+        price: PropTypes.number
+    }),
+
+
+
     colors: PropTypes.array
 }
 

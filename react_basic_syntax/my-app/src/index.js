@@ -115,7 +115,9 @@ const root = createRoot(container)
 // root.render(<ChildDemo />)
 // root.render(<Counter />)
 // root.render(<ContextDemo />)
-root.render(<PropsValidDemo colors={['red','blue']} />)
+root.render(<PropsValidDemo colors={['red','blue']}
+        fn={() => {}}
+/>)
 // root.render(<ChildrenDemo>
 //     {() => console.log('这是一个函数节点')}
 //         {/*<Test/>*/}

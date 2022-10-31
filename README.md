@@ -195,4 +195,11 @@ __JSX是React的核心内容__
     3. 使用组件名 .propTypes={}来给组件的props添加校验规则
     4. 校验规则通过PropTypes对象来指定
 
+### 约束规则
+    1. 常见类型：array、bool、func、number、object、string
+    2. React元素类型：element
+    3. 必填项：isRequired
+    4. 特定结构的对象：shape({})
+    所有校验规则见以下网址:
+    https://reactjs.org/docs/typechecking-with-proptypes.html
     
