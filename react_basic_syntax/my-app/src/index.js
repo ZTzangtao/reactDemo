@@ -117,6 +117,7 @@ const root = createRoot(container)
 // root.render(<ContextDemo />)
 root.render(<PropsValidDemo colors={['red','blue']}
         fn={() => {}}
+                            pageSize={20}
 />)
 // root.render(<ChildrenDemo>
 //     {() => console.log('这是一个函数节点')}

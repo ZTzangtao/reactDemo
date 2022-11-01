@@ -8,8 +8,13 @@ import PropTypes from 'prop-types'
 
 const PropsValidDemo = (props) => {
     const arr = props.colors
-    const list = arr.map( (item, index) => <li key = {index}>{item}</li> )
-    return <ul>{list}</ul>
+    const list = arr.map((item, index) => <li key={index}>{item}</li>)
+    return (
+        <div>
+            <ul>{list}</ul>
+            <h1>此处展示props的默认值：{props.pageSize}</h1>
+        </div>
+    )
 }
 // 添加props校验
 PropsValidDemo.propTypes = {
@@ -31,6 +36,10 @@ PropsValidDemo.propTypes = {
 
 
     colors: PropTypes.array
+}
+
+PropsValidDemo.defaultProps = {
+    pageSize: 10
 }
 
 export default PropsValidDemo

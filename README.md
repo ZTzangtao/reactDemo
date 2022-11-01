@@ -202,4 +202,8 @@ __JSX是React的核心内容__
     4. 特定结构的对象：shape({})
     所有校验规则见以下网址:
     https://reactjs.org/docs/typechecking-with-proptypes.html
+
+### props的默认值
+    场景：分页组件 -> 每页显示条数
+    作用：给props设置默认值，在未传入props时生效
     
