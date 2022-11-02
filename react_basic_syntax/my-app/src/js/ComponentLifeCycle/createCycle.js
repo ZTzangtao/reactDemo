@@ -36,8 +36,8 @@ class CreateCycle extends React.Component {
         // this.setState({
         //     count: 1
         // })
-        const title = document.getElementById('title')
-        console.log(title)
+        // const title = document.getElementById('title')
+        // console.log(title)
         console.warn('生命周期钩子函数： render')
         return (
             <div>
