@@ -17,6 +17,7 @@ import Counter from "./js/counter";
 import ContextDemo from "./js/contextDemo";
 import ChildrenDemo from "./js/childernDemo"
 import PropsValidDemo from "./js/propsValidDemo"
+import CreateCycle from "./js/ComponentLifeCycle/createCycle"
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -115,10 +116,12 @@ const root = createRoot(container)
 // root.render(<ChildDemo />)
 // root.render(<Counter />)
 // root.render(<ContextDemo />)
-root.render(<PropsValidDemo colors={['red','blue']}
-        fn={() => {}}
-                            pageSize={20}
-/>)
+root.render(<CreateCycle />)
+
+// root.render(<PropsValidDemo colors={['red','blue']}
+//         fn={() => {}}
+//                             pageSize={20}
+// />)
 // root.render(<ChildrenDemo>
 //     {() => console.log('这是一个函数节点')}
 //         {/*<Test/>*/}
