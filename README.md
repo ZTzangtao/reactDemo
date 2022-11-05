@@ -233,3 +233,8 @@ __JSX是React的核心内容__
     更新时（更新阶段）
     执行时机：1. setState() 2. forceUpdate() 3. 组件接收到新的props
     说明：以上三者任意一种变化，组件就会重新渲染
+    执行顺序：render() -> componentDidUpdate()
+| 钩子函数           | 触发时机          | 作用                                              |
+| :----:           | :----:           | :----: |
+| render           | 每次组件渲染都会触发 | 渲染UI（注意：不能调用setState()）                   |
+| componentDidMount| 组件更新(完成DOM渲染)后 | 1. 发送网络请求 2. DOM操作 注意：如果要setState()必须放在if条件中        |
