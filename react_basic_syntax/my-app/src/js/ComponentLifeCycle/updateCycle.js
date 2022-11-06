@@ -28,7 +28,13 @@ class UpdateCycle extends React.Component {
         console.warn('--父组件-- 生命周期钩子函数：render')
         return (
             <div>
-                <Counter count={this.state.count} />
+
+                {
+                    this.state.count > 3 ?
+                        <p>豆豆被打死了~</p> :
+                        <Counter count={this.state.count} />
+                }
+
                 <button id="btn" onClick={this.handleClick}>打豆豆</button>
             </div>
         )
@@ -37,11 +43,12 @@ class UpdateCycle extends React.Component {
 
 class Counter extends React.Component {
     render() {
-        console.warn('--子组件-- 生命周期钩子函数：render')
+        // console.warn('--子组件-- 生命周期钩子函数：render')
         return <h1 id="title">统计豆豆被打的次数:{this.props.count}</h1>
     }
     // 注意：如果要调用setState()更新状态，必须要放在一个 if 条件中
     // 因为：如果直接调用更新状态 setState()更新状态，也会导致递归更新！！！
+    /*
     componentDidUpdate(prevProps) {
         console.warn('--子组件-- 生命周期钩子函数：componentDidUpdate')
 
@@ -60,6 +67,22 @@ class Counter extends React.Component {
         // const title = document.getElementById('title');
         // console.log(title.innerHTML)
     }
-}
+*/
 
+    componentDidMount() {
+        // 开启定时器
+        this.timeId = setInterval(() => {
+            console.log('定时器正在执行~')
+        }, 500)
+    }
+
+    componentWillUnmount() {
+        console.warn('生命周期钩子函数：componentWillUnmount')
+
+        // 清理定时器
+        clearInterval(this.timeId)
+    }
+
+
+}
 export default UpdateCycle
