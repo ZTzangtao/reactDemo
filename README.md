@@ -243,4 +243,17 @@ __JSX是React的核心内容__
 | 钩子函数               | 触发时机           | 作用                                              |
 | :----:               | :----:            | :----: |
 | componentWillUnmount | 组件卸载(从页面中消失)| 执行清理工作（比如：清理定时器等）                   |
-
+    不常用钩子函数
+    componentWillMount
+    componentWillReceiveProps
+    componentWillUpdate
+    getDerivedStateFromProps
+    shouldComponentUpdate
+    getSnapshotBeforeUpdate
+## render-props和高阶组件
+### React组件复用概述
+    思考：如果两个组件中的部分功能相似或想通，该如何处理？
+    处理方式：复用相似的功能（联想函数封装）
+    复用什么？1. state 2. 操作state的方法（组件状态逻辑）
+    两种方式：1. render props模式 2. 高阶组件（HOC）
+    注意：这两种方式不是新的API，而是利用React自身特点的编码技巧，演化而成的固定模式（写法）
