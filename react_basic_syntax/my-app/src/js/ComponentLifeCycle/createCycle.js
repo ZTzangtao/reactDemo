@@ -48,3 +48,47 @@ class CreateCycle extends React.Component {
     }
 }
 export default CreateCycle
+
+
+
+
+// const fun1 = (arr,keyList) => {
+//     if (!Array.isArray(arr) || arr?.length == 0) {
+//         return null;
+//     }
+//     let allKeyList = Object.keys(arr[0]);
+//     let noChangeKeys = allKeyList.filter((res) => !keyList.includes(res));
+//     let targetArr = [];
+//     for (let value of arr) {
+//         if (targetArr.length == 0) {
+//             for (let nokey of noChangeKeys) {
+//                 value[nokey] = [value[nokey]];
+//             }
+//             targetArr.push(value);
+//         } else {
+//             let son = targetArr.find((res) => {
+//                 let count = 0;
+//                 for (let key of keyList) {
+//                     if (res[key] == value[key]) {
+//                         count++;
+//                     } else {
+//                         break;
+//                     }
+//                 }
+//                 return count == keyList.length;
+//             });
+//             console.log(son)
+//             if (!son) {
+//                 for (let nokey of noChangeKeys) {
+//                     value[nokey] = [value[nokey]];
+//                 }
+//                 targetArr.push(value);
+//             } else {
+//                 for (let nokey of noChangeKeys) {
+//                     son[nokey].push(value[nokey]);
+//                 }
+//             }
+//         }
+//     }
+//     return targetArr;
+// };
