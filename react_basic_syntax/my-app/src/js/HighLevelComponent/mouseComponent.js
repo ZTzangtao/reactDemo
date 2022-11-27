@@ -8,26 +8,27 @@ import ReactDOM from 'react-dom'
 // 创建Mouse组件
 class Mouse extends React.Component {
     // 鼠标位置state
-    static = {
+    state = {
         x: 0,
         y: 0
     }
 
     // 鼠标移动事件的事件处理程序
     handleMouseMove = (e) => {
-        this.state({
+        this.setState({
             x: e.clientX,
             y: e.clientY
         })
     }
 
     // 监听鼠标移动事件
+    // 创建时的钩子函数
     componentDidMount() {
         window.addEventListener('mousemove', this.handleMouseMove)
     }
 
     render() {
-        return null
+        return this.props.render(this.state)
     }
 }
 export default Mouse

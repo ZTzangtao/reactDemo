@@ -19,6 +19,7 @@ import ChildrenDemo from "./js/childernDemo"
 import PropsValidDemo from "./js/propsValidDemo"
 import UpdateCycle from "./js/ComponentLifeCycle/updateCycle"
 import CreateCycle from "./js/ComponentLifeCycle/createCycle"
+import Mouse from "./js/HighLevelComponent/mouseComponent"
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -107,6 +108,18 @@ import CreateCycle from "./js/ComponentLifeCycle/createCycle"
 //        return <button>我是button组件</button>
 // }
 
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>render props 模式</h1>
+                <Mouse render={(mouse) => {
+                   return <p>鼠标当前的位置 {mouse.x}, {mouse.y}</p>
+                }} />
+            </div>
+        );
+    }
+}
 
 // 渲染React元素
 // new
@@ -118,7 +131,8 @@ const root = createRoot(container)
 // root.render(<Counter />)
 // root.render(<ContextDemo />)
 // root.render(<CreateCycle />)
-root.render(<UpdateCycle />)
+// root.render(<UpdateCycle />)
+root.render(<App />)
 // root.render(<PropsValidDemo colors={['red','blue']}
 //         fn={() => {}}
 //                             pageSize={20}
