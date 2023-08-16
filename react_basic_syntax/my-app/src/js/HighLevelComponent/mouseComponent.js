@@ -28,7 +28,7 @@ class Mouse extends React.Component {
     }
 
     render() {
-        return this.props.render(this.state)
+        return this.props.children(this.state)
     }
 }
 export default Mouse

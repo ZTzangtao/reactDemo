@@ -268,3 +268,34 @@ __JSX是React的核心内容__
     1. 创建Mouse组件，在组件中提供复用的状态逻辑代码（1.状态 2.操作状态的方法）
     2. 将要复用的状态作为props.render(state)方法的参数，暴露到组件外部
     3. 使用props.render()的返回值作为要渲染的内容
+#### 演示 Mouse 组件的复用
+    · Mouse组件负责: 封装复用的状态逻辑代码(1.状态 2.操作状态的方法)
+    · 状态: 鼠标坐标(x,y)
+    · 操作状态的方法: 鼠标移动事件
+    · 传入的render prop负责: 使用复用的状态来渲染UI结构
+    
+```
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>render props 模式</h1>
+                <Mouse render={(mouse) => {
+                   return <p>鼠标当前的位置 {mouse.x}, {mouse.y}</p>
+                }} />
+            </div>
+        );
+    }
+}
+```
+#### children代替render属性
+* 注意: 并不是该模式叫render props就必须使用名为render的prop,实际上可以使用任意名称的prop
+* 把prop是一个函数并且告诉组件要渲染什么内容的技术叫做:render props模式
+* 推荐:使用children代替render属性
+```
+    <Mouse>
+        {({x, y}) => <p>鼠标的位置是 {x}, {y}</p> }
+    <Mouse>
+    // 组件内部:
+    this.props.children(this.state)
+```
