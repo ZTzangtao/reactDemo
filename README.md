@@ -299,3 +299,37 @@ class App extends React.Component {
     // 组件内部:
     this.props.children(this.state)
 ```
+#### 代码优化
+1. 推荐: 给render props模式添加props校验
+2. 应该在组件卸载时解除mousemove事件绑定
+```
+    Mouse.propTypes = {
+        children: PropsTypes.func.isRequired
+    }
+```
+```
+    componentWillUnmount() {
+        window.removeEventListener('mousemove', this.handleMouseMove) 
+    }
+```
+### 高阶组件
+#### 概述
+* 目的: 实现状态逻辑复用
+* 采用包装(装饰)模式, 比如说: 手机壳
+* 手机: 获取保护功能
+* 手机壳: 提供保护功能
+* 高阶组件就相当于手机壳, 通过包装组件, 增强组件功能
+#### 思路分析
+* 高阶组件(HOC, Higher-OrderComponent)是一个函数, 接收要包装的组件, 返回增强后的组件
+* 高阶组件内部创建一个类组件, 在这个类组件中提供复用的状态逻辑代码, 通过prop将复用的代码传递给被包装组件WrappedComponent
+```
+    const EnhancedComponent = withHOC(WrappedComponent)
+```
+```
+    // 高阶组件内部创建的类组件:
+    class Mouse extends React.Component {
+        render() {
+            returen <WrappedComponent {...this.state} />
+        }
+    }
+```

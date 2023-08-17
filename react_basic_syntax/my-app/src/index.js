@@ -21,7 +21,7 @@ import UpdateCycle from "./js/ComponentLifeCycle/updateCycle";
 import CreateCycle from "./js/ComponentLifeCycle/createCycle";
 import Mouse from "./js/HighLevelComponent/mouseComponent";
 import img from './img/ys.jpg';
-
+import PropTypes from 'prop-types';
 
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
@@ -110,6 +110,10 @@ import img from './img/ys.jpg';
 // const Test = () =>{
 //        return <button>我是button组件</button>
 // }
+Mouse.propType = {
+    children: PropTypes.func.isRequired
+
+}
 
 class App extends React.Component {
     render() {

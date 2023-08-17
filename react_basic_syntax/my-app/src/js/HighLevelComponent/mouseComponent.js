@@ -27,6 +27,11 @@ class Mouse extends React.Component {
         window.addEventListener('mousemove', this.handleMouseMove)
     }
 
+    // 推荐: 在组件卸载时移除事件绑定
+    componentWillUnmount() {
+        window.removeEventListener('mousemove', this.handleMouseMove)
+    }
+
     render() {
         return this.props.children(this.state)
     }
