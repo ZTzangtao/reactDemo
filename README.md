@@ -333,3 +333,31 @@ class App extends React.Component {
         }
     }
 ```
+#### 使用步骤
+1. 创建一个函数, 名称约定以with开头
+2. 指定函数参数，参数应该以大写字母开头(作为要渲染的组件)
+3. 在函数内部创建一个类组件, 提供复用的状态逻辑代码, 并返回
+4. 在该组件中, 渲染参数组件, 同时将状态通过prop传递给参数组件
+5. 调用该高阶组件, 传入要增强的组件, 通过返回值拿到增强后的组件, 并将其渲染到页面中
+
+```
+    function withMouse(WrappedComponent) {
+        class Mouse extends React.Component {}
+        return Mouse
+    }
+```
+
+```
+    // Mouse组件的render方法中: 
+    return <WrappedComponent {...this.state} />
+```
+
+```
+    // 创建组件
+    const MousePosition = withMouse(Position)
+    
+    // 渲染组件
+    <MousePosition />
+    
+```
+

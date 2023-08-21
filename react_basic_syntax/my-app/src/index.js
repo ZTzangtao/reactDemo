@@ -22,7 +22,7 @@ import CreateCycle from "./js/ComponentLifeCycle/createCycle";
 import Mouse from "./js/HighLevelComponent/mouseComponent";
 import img from './img/ys.jpg';
 import PropTypes from 'prop-types';
-
+import MousePositionTest from "./js/HighLevelComponent/highLevelComponent";
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -110,53 +110,55 @@ import PropTypes from 'prop-types';
 // const Test = () =>{
 //        return <button>我是button组件</button>
 // }
-Mouse.propType = {
-    children: PropTypes.func.isRequired
+//Mouse.propType = {
+//    children: PropTypes.func.isRequired
+//}
 
-}
+
+
 
 class App extends React.Component {
     render() {
         return (
-
-            <div>
-                <h1>render props 模式</h1>
-                {/*
-                <Mouse render={(mouse) => {
-                   return <p>鼠标当前的位置 {mouse.x}, {mouse.y}</p>
-                }} />
-                */}
-                <Mouse>
-                    {mouse => {
-                        return (<p>鼠标的位置: {mouse.x} {mouse.y}</p>)
-                       }
-                    }
-                </Mouse>
-
-                {/* 猫捉老鼠 */}
-                <Mouse>
-                {mouse => (
-                 <img src={img} alt="索儿"
-                 style={{
-                    position: 'absolute',
-                    top: mouse.y - 150,
-                    left: mouse.x - 150
-                    }} />
-                )}
-                </Mouse>
-
-
-{/*
-                <Mouse render={mouse => {
-                    return <img src={img} alt="索儿" style={{
-                        position: 'absolute',
-                        top: mouse.y - 150,
-                        left: mouse.x - 150
-                    }} />
-                }}></Mouse>
-*/}
-
-            </div>
+<MousePositionTest />
+//            <div>
+//                <h1>render props 模式</h1>
+//                {/*
+//                <Mouse render={(mouse) => {
+//                   return <p>鼠标当前的位置 {mouse.x}, {mouse.y}</p>
+//                }} />
+//                */}
+//                <Mouse>
+//                    {mouse => {
+//                        return (<p>鼠标的位置: {mouse.x} {mouse.y}</p>)
+//                       }
+//                    }
+//                </Mouse>
+//
+//                {/* 猫捉老鼠 */}
+//                <Mouse>
+//                {mouse => (
+//                 <img src={img} alt="索儿"
+//                 style={{
+//                    position: 'absolute',
+//                    top: mouse.y - 150,
+//                    left: mouse.x - 150
+//                    }} />
+//                )}
+//                </Mouse>
+//
+//
+//{/*
+//                <Mouse render={mouse => {
+//                    return <img src={img} alt="索儿" style={{
+//                        position: 'absolute',
+//                        top: mouse.y - 150,
+//                        left: mouse.x - 150
+//                    }} />
+//                }}></Mouse>
+//*/}
+//
+//            </div>
 
         );
     }
