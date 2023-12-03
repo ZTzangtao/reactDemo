@@ -380,3 +380,28 @@ class App extends React.Component {
 ```
    <WrappedComponent {...this.state} {...this.props} />
 ```
+# setState() 的说明
+## 1.1 更新数据
+* <font color='red'>setState()</font>是<font color='red'>异步</font>更新数据的
+* 注意: 使用该语法时，后面的setState()不要依赖于前面的setState()
+* 可以多次调用setState(), 只会出发一次重新渲染
+```
+    this.state = { count: 1 }
+    this.setState({
+        count: this.state.count + 1
+    })
+    console.log(this.state.count) // 1
+```
+## 1.2 推荐语法
+* 推荐: 使用<font color='red'>setState((state, props)=>{})</font>语法
+* 参数state: 表示最新的state
+* 参数props: 表示最新的props
+```
+    this.setState((state, props) => {
+            return {
+                count: state.count + 1
+            }
+        }
+    )
+    console.log(this.state.count) // 1
+```

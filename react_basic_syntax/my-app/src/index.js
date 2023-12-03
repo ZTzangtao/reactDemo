@@ -23,6 +23,8 @@ import Mouse from "./js/HighLevelComponent/mouseComponent";
 import img from './img/ys.jpg';
 import PropTypes from 'prop-types';
 import MousePositionTest from "./js/HighLevelComponent/highLevelComponent";
+import ReactPrinciple from "./js/ReactPrinciple/reactPrinciple";
+
 // 2 创建react元素
 // const title = React.createElement('h1', null, 'Hello React 脚手架')
 
@@ -119,8 +121,8 @@ import MousePositionTest from "./js/HighLevelComponent/highLevelComponent";
 
 class App extends React.Component {
     render() {
-        return (
-<MousePositionTest />
+        return ( <ReactPrinciple />
+// <MousePositionTest />
 //            <div>
 //                <h1>render props 模式</h1>
 //                {/*
