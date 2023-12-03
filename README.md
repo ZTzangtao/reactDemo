@@ -358,6 +358,25 @@ class App extends React.Component {
     
     // 渲染组件
     <MousePosition />
-    
 ```
-
+#### 设置displayName
+* 使用高阶组件存在的问题: 得到两个组件名称相同
+* 原因: 默认情况下，React使用组件名称作为<font color=Red>displayName</font>
+* 解决方式: 为高阶组件 设置 <font color=Red>displayName</font> 便于调试时区分不同的组件
+* displayName的作用: 用于设置调试信息（React Developer Tools信息）
+* 设置方式：
+```
+  Mouse.displayName = `WithMouse\${getDisplayName(WrappedComponent)}`
+  
+  function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || 'Component'
+  }
+```
+#### 传递props
+* 问题: props丢失
+* 原因: 高阶组件没有往下传递props
+* 解决方式: 渲染WrappedComponent时, 将<font color=Red>state</font>和<font color=Red>this.props</font>一起传递给组件
+* 传递方式:
+```
+   <WrappedComponent {...this.state} {...this.props} />
+```

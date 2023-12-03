@@ -31,18 +31,31 @@ function withMouse(WrappedComponent) {
             window.addEventListener('mousemove', this.handleMouseMove)
         }
         render() {
-            return <WrappedComponent {...this.state}></WrappedComponent>
+            console.log('Mouse: ', this.props)
+            return <WrappedComponent {...this.state} {...this.props} />
         }
     }
+
+    // 设置 displayName
+    Mouse.displayName = `WithMouse${getDisplayName(WrappedComponent)}`
     return Mouse
 }
 
+function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
+
 // 用来测试高阶组件
-const Position = props => (
+const Position = props => {
+    console.log('Position: ', props)
+    return (
+
     <p>
         鼠标当前位置: (x: {props.x}, y: {props.y})
     </p>
-)
+  )
+}
 
 // 猫捉老鼠的组件:
 const Cat = props => (
@@ -66,7 +79,7 @@ class MousePositionTest extends React.Component {
         return (
             <div>
                 <h1>高阶组件</h1>
-                <MousePosition />
+                <MousePosition a="1" />
                 <MouseCat />
             </div>
         )
