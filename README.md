@@ -405,3 +405,20 @@ class App extends React.Component {
     )
     console.log(this.state.count) // 1
 ```
+## 1.3 第二个参数
+* 场景: 在状态更新(页面完成重新渲染)后立即执行某个操作
+* 语法: <font color='red'>setState(updater[, callback])</font>
+
+```
+    this.setState(
+        (state, props) => {},
+        () => {console.log('这个回调函数会在状态更新后立即执行')}
+    )
+
+   this.setState(
+        (state, props) => {},
+        () => {
+            document.title = '更新state后的标题: ' + this.state.count
+        }
+    )
+```
