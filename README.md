@@ -422,3 +422,40 @@ class App extends React.Component {
         }
     )
 ```
+## 2.JSX语法的转化过程
+* JSX 仅仅是createElement() 方法的语法糖(简化语法)
+* JSX 语法被@babel/preset-react插件编译为仅仅是createElement()方法
+
+JSX语法
+```
+const element = {
+    <h1 className="greeting">
+        Hello JSX!
+    </h1>
+}
+```
+createElement()
+```
+const element = React.createElement(
+    'h1',
+    {className: 'greeting'},
+    'Hello JSX!'
+);
+```
+
+* React 元素: 是一个对象, 用来描述你希望在屏幕上看到的内容
+
+React 元素
+```
+// 注意: 这是简化过的结构
+const element = {
+    type: 'h1',
+    props: {
+        className: 'greeting',
+        children: 'Hello JSX!'
+    }
+};
+```
+## 3. 组件更新机制
+* <font color='red'>setState()</font>的两个作用: 1. 修改state 2. 更新组件(UI)
+* 过程: 父组件重新渲染时, 也会重新渲染子组件. 但只会渲染<font color='red'>当前组件子树</font>(当前组件及其所有子组件)
