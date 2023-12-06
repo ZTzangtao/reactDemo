@@ -459,3 +459,49 @@ const element = {
 ## 3. 组件更新机制
 * <font color='red'>setState()</font>的两个作用: 1. 修改state 2. 更新组件(UI)
 * 过程: 父组件重新渲染时, 也会重新渲染子组件. 但只会渲染<font color='red'>当前组件子树</font>(当前组件及其所有子组件)
+
+## 4. 组件性能优化
+* <font color='red'>减轻state</font>: 只存储跟组件渲染相关的数据(比如: count/列表数据/loading等)
+*  注意: 不用做渲染的数据不要放在state中, 比如定时器id
+*  对于这种需要在多个方法中用到的数据, 应该放在this中
+
+```
+class Hello extends Component {
+    componentDidmount() {
+        //timerId存储到this中,而不是state中
+        this.timerId = setInterval(() => {}, 2000)
+    }
+    componentWillUnmount() {
+        clearInterval(this.timerId)
+    }
+    render () { ... }
+}
+```
+
+## 4.2 避免不必要的重新渲染
+* 组件更新机制: 父组件更新会引起子组件也被更新, 这种思路很清晰
+* 问题: 子组件没有任何变化时也会重新渲染
+* 如何避免不必要的重新渲染？
+* 解决方式: 使用<font color='red'>钩子函数 shouldComponentUpdate(nextProps, nextState)</font>
+* 作用: 通过返回值决定该组件是否重新渲染, 返回true表示重新渲染, false表示不重新渲染 
+* 触发时机: 更新阶段的钩子函数, 组件重新渲染前执行( shouldComponentUpdate -> render )
+```
+    class Hello extends Component {
+        shouldComponentUpdate() {
+            // 根据条件, 决定是否重新渲染组件
+            return false
+        }
+        
+        render () { ...  }
+    }
+```
+* 案例: 随机数
+```
+    class Hello extends Component {
+        shouldComponentUpdate(nextProps, nextState) {
+            return nextState.number !== this.state.number
+        }
+        
+        render () { ...  }
+    }
+```

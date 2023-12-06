@@ -174,114 +174,186 @@ import ReactPrinciple from "./js/ReactPrinciple/reactPrinciple";
 //     }
 // }
 
-class App extends React.Component {
-    state =  {
-        color: '#369'
-    }
-
-    getColor() {
-        return Math.floor(Math.random() * 256)
-    }
-
-    changeBG = () => {
-        this.setState(() => {
-            return {
-                color: `rgb(${this.getColor()}, ${this.getColor()}, ${this.getColor()})`
-            }
-        })
-    }
-    render() {
-        console.log('根组件')
-        return (
-            <div className="app" style={{backgroundColor: this.state.color}}>
-                <button onClick={this.changeBG}>根组件 - 切换样式状态</button>
-                <div className="app-wrapper">
-                    <Parent1 />
-                    <Parent2 />
-                </div>
-            </div>
-        )
-    }
-}
+// class App extends React.Component {
+//     state =  {
+//         color: '#369'
+//     }
+//
+//     getColor() {
+//         return Math.floor(Math.random() * 256)
+//     }
+//
+//     changeBG = () => {
+//         this.setState(() => {
+//             return {
+//                 color: `rgb(${this.getColor()}, ${this.getColor()}, ${this.getColor()})`
+//             }
+//         })
+//     }
+//     render() {
+//         console.log('根组件')
+//         return (
+//             <div className="app" style={{backgroundColor: this.state.color}}>
+//                 <button onClick={this.changeBG}>根组件 - 切换样式状态</button>
+//                 <div className="app-wrapper">
+//                     <Parent1 />
+//                     <Parent2 />
+//                 </div>
+//             </div>
+//         )
+//     }
+// }
 
 // -----------------------------------------------左侧-------------------------------------------
-class Parent1 extends React.Component {
-    state = {
-        count: 0
-    }
+// class Parent1 extends React.Component {
+//     state = {
+//         count: 0
+//     }
 
-    handleClick = () => {
-        this.setState(state => ({count: state.count + 1}))
-    }
-    render() {
-        console.log('左侧父组件')
-        return (
-            <div className="parent">
-                <h2>
-                    左侧 - 父组件1
-                    <button onClick={this.handleClick}>点我({this.state.count})</button>
-                </h2>
-                <div className="parent-wrapper">
-                    <Child1 />
-                    <Child2 />
-                </div>
-            </div>
-        )
-    }
-}
+//     handleClick = () => {
+//         this.setState(state => ({count: state.count + 1}))
+//     }
+//     render() {
+//         console.log('左侧父组件')
+//         return (
+//             <div className="parent">
+//                 <h2>
+//                     左侧 - 父组件1
+//                     <button onClick={this.handleClick}>点我({this.state.count})</button>
+//                 </h2>
+//                 <div className="parent-wrapper">
+//                     <Child1 />
+//                     <Child2 />
+//                 </div>
+//             </div>
+//         )
+//     }
+// }
 
-class Child1 extends React.Component {
-    render() {
-        console.log('左侧子组件 - 1')
-        return <div className="child">子组件1-1</div>
-    }
-}
-class Child2 extends React.Component {
-    render() {
-        console.log('左侧子组件 - 2')
-        return <div className="child">子组件1-2</div>
-    }
-}
+// class Child1 extends React.Component {
+//     render() {
+//         console.log('左侧子组件 - 1')
+//         return <div className="child">子组件1-1</div>
+//     }
+// }
+// class Child2 extends React.Component {
+//     render() {
+//         console.log('左侧子组件 - 2')
+//         return <div className="child">子组件1-2</div>
+//     }
+// }
 
 // -----------------------------------------------右侧-------------------------------------------
 
-class Parent2 extends React.Component {
+// class Parent2 extends React.Component {
+//     state = {
+//         count: 0
+//     }
+//
+//     handleClick = () => {
+//         this.setState(state => ({count: state.count + 1}))
+//     }
+//     render() {
+//         console.log('右侧父组件')
+//         return (
+//             <div className="parent">
+//                 <h2>
+//                     右侧 - 父组件2
+//                     <button onClick={this.handleClick}>点我({this.state.count})</button>
+//                 </h2>
+//                 <div className="parent-wrapper">
+//                     <Child3 />
+//                     <Child4 />
+//                 </div>
+//             </div>
+//         )
+//     }
+// }
+
+// class Child3 extends React.Component {
+//     render() {
+//         console.log('右侧子组件 - 1')
+//         return <div className="child">子组件2-1</div>
+//     }
+// }
+// class Child4 extends React.Component {
+//     render() {
+//         console.log('右侧子组件 - 2')
+//         return <div className="child">子组件2-2</div>
+//     }
+// }
+
+// class App extends React.Component {
+//     state = {
+//         count: 0
+//     }
+//
+//     handleClick = () => {
+//         this.setState(state => ({count: state.count + 1}))
+//     }
+//
+//     // 钩子函数
+//     shouldComponentUpdate(nextProps, nextState, nextContext) {
+//         // 最新的状态
+//         console.log('最新的state: ', nextState)
+//         // 更新前的状态
+//         console.log('this.state: ', this.state)
+//         // 返回false, 阻止组件重新渲染
+//         // return false
+//
+//         return true
+//     }
+//
+//     render() {
+//         console.log('组件更新了')
+//         return (
+//             <div>
+//                 <h1>计数器: {this.state.count}</h1>
+//                 <button onClick={this.handleClick}>+1</button>
+//             </div>
+//         )
+//     }
+// }
+class App extends React.Component {
     state = {
-        count: 0
+        number: 0
     }
 
     handleClick = () => {
-        this.setState(state => ({count: state.count + 1}))
+        this.setState( () => {
+            return {
+                number: Math.floor(Math.random() * 3)
+            }
+        })
     }
+
+    // 因为两次生成的随机数可能相同, 如果相同, 此时, 不需要重新渲染
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log('最新状态: ', nextState, ', 当前状态: ', this.state)
+        return nextState.number !== this.state.number
+
+        // if (nextState.number !== this.state.number) {
+        //     return true
+        // }
+        // return false
+
+        // if (nextState.number === this.state.number) {
+        //     return false
+        // }
+        // return true
+    }
+
     render() {
-        console.log('右侧父组件')
-        return (
-            <div className="parent">
-                <h2>
-                    右侧 - 父组件2
-                    <button onClick={this.handleClick}>点我({this.state.count})</button>
-                </h2>
-                <div className="parent-wrapper">
-                    <Child3 />
-                    <Child4 />
-                </div>
-            </div>
-        )
-    }
+    console.log('render')
+    return (
+        <div>
+            <h1>随机数: {this.state.number}</h1>
+            <button onClick={this.handleClick}>重新生成</button>
+        </div>
+    )
+}
 }
 
-class Child3 extends React.Component {
-    render() {
-        console.log('右侧子组件 - 1')
-        return <div className="child">子组件2-1</div>
-    }
-}
-class Child4 extends React.Component {
-    render() {
-        console.log('右侧子组件 - 2')
-        return <div className="child">子组件2-2</div>
-    }
-}
 
 // 渲染React元素
 // new
