@@ -568,3 +568,50 @@ class Hello extends Component {
         list: [...this.state.list, {新数据}]
    })
 ```
+# 5. 虚拟DOM和Diff算法
+* React更新视图的思想是： 只要state变化就重新渲染视图
+* 特点：思路非常清晰
+* 问题：组件中只有一个DOM元素需要更新时，也得把整个组件的内容重新渲染到页面中？ <font color='red'>不是</font>
+* 理想状态: <font color='red'>部分更新</font>，只更新变化的地方。
+* 问题：React是如何做到部分更新的?<font color='red'> 虚拟DOM配合Diff算法</font>
+## 虚拟DOM：本质上就是一个JS对象，用来描述你希望在屏幕上看到的内容（UI）
+
+```
+    虚拟DOM对象                                          HTML 结构
+    
+    const element = {                                   <h1 class="greeting">
+        type: 'h1',                                         Hello JSX!
+        props: {                       ------------>    </h1>
+            className: 'greeting',
+            children: 'Hello JSX!'
+        } 
+    }
+```
+## 执行过程
+1. 初次渲染时，React会根据初始state（Model）, 创建一个<font color='red'>虚拟DOM对象（树）</font>。
+2. 根据虚拟DOM生成真正的DOM，渲染到页面中。
+3. 当数据变化后（setState()）， 重新根据新的数据，创建新的虚拟DOM对象（树）。
+4. 与上一次得到的虚拟DOM对象，使用<font color='red'>Diff算法</font>对比（找不同），得到需要更新的内容。
+5. 最终，React只将<font color='red'>变化的内容</font>更新（patch）到DOM中，重新渲染到页面。（patch就是打补丁的意思）
+### 代码演示
+* 组件render()调用后，根据<font color='red'>状态</font>和<font color='red'>JSX结构</font>生成虚拟DOM对象
+
+{
+    type: 'div',
+    props: {
+        children: [
+            {type: 'h1', props: {children: '随机数'}},
+            {type: 'p', props: {children: <font color='red'>0</font>}}
+        ]
+    }
+}
+{
+type: 'div',
+props: {
+children: [
+{type: 'h1', props: {children: '随机数'}},
+{type: 'p', props: {children: <font color='red'>2</font>}}
+]
+}
+}
+* 示例中，只更新p元素的文本节点内容

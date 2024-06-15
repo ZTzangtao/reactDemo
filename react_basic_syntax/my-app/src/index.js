@@ -363,14 +363,19 @@ class App extends React.PureComponent {
         // return true
     // }
 
+    // render 方法调用并不意味着浏览器中的重新渲染！！！
+    // render 方法调用仅仅说明要进行diff
     render() {
+
     console.log('render')
-    return (
+        const el =(
         <div>
             <NumberBox number={this.state.obj.number} />
             <button onClick={this.handleClick}>重新生成</button>
         </div>
-    )
+        )
+    console.log(el)
+        return el
 }
 
 }
