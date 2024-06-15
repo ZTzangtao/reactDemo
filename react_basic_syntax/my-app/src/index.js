@@ -1,5 +1,5 @@
 // 1 导入react
-
+import { StrictMode } from 'react';
 
 import React from 'react'
 import { createRoot } from "react-dom/client";
@@ -314,23 +314,43 @@ import ReactPrinciple from "./js/ReactPrinciple/reactPrinciple";
 //         )
 //     }
 // }
-class App extends React.Component {
+
+const obj = {number: 0}
+const newObj = obj
+newObj.number = 2
+console.log(obj === newObj)
+
+class App extends React.PureComponent {
     state = {
-        number: 0
+        obj: {
+            number: 0
+        }
     }
 
     handleClick = () => {
-        this.setState( () => {
+        // 正确做法：创建新对象
+        const newObj = {...this.state.obj, number: Math.floor(Math.random() * 3)}
+        this.setState(() => {
             return {
-                number: Math.floor(Math.random() * 3)
+                obj: newObj
             }
         })
+
+        // 错误演示： 直接修改原始对象中属性的值
+        // const newObj = this.state.obj
+        // newObj.number = Math.floor(Math.random() * 3)
+        //
+        // this.setState( () => {
+        //     return {
+        //        obj: newObj
+        //     }
+        // })
     }
 
     // 因为两次生成的随机数可能相同, 如果相同, 此时, 不需要重新渲染
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        console.log('最新状态: ', nextState, ', 当前状态: ', this.state)
-        return nextState.number !== this.state.number
+    // shouldComponentUpdate(nextProps, nextState, nextContext) {
+    //     console.log('最新状态: ', nextState, ', 当前状态: ', this.state)
+    //     return nextState.number !== this.state.number
 
         // if (nextState.number !== this.state.number) {
         //     return true
@@ -341,18 +361,39 @@ class App extends React.Component {
         //     return false
         // }
         // return true
-    }
+    // }
 
     render() {
     console.log('render')
     return (
         <div>
-            <h1>随机数: {this.state.number}</h1>
+            <NumberBox number={this.state.obj.number} />
             <button onClick={this.handleClick}>重新生成</button>
         </div>
     )
 }
+
 }
+
+class NumberBox extends React.Component {
+    shouldComponentUpdate(nextProps) {
+        console.log('最新props: ', nextProps, ', 当前props: ', this.props)
+        // 如果前后两次number值相同, 就返回false, 不更新组件
+        // if (nextProps.number === this.props.number) {
+        //     return false
+        // }
+        // return true
+        return nextProps.number !== this.props.number
+    }
+    render() {
+        console.log('子组件中的render')
+        return (
+            <div>
+                <h1>随机数: {this.props.number}</h1>
+
+            </div>
+        )
+}}
 
 
 // 渲染React元素
@@ -366,7 +407,10 @@ const root = createRoot(container)
 // root.render(<ContextDemo />)
 // root.render(<CreateCycle />)
 // root.render(<UpdateCycle />)
-root.render(<App />)
+root.render(
+    <StrictMode>
+    <App />
+        </StrictMode>)
 // root.render(<PropsValidDemo colors={['red','blue']}
 //         fn={() => {}}
 //                             pageSize={20}

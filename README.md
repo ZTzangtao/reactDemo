@@ -505,3 +505,66 @@ class Hello extends Component {
         render () { ...  }
     }
 ```
+```
+    class Hello extends Component {
+        shouldComponentUpdate(nextProps, nextState) {
+            return nextProps.number !== this.props.number
+        }
+        
+        render () { ...  }
+    }
+```
+# 7. render-props和高阶组件
+## 7.1 React组件复用概述
+* 思考：如果两个组件中的不分功能相似或相同，该如何处理？
+* 处理方式：<font color='red'>复用</font>相似功能(联想函数封装)
+* 复用什么？1. <font color='red'>state</font> 2. <font color='red'>操作state的方法</font>(组件状态逻辑)
+* 两种方式：1. <font color='red'>render props模式</font> 2. <font color='red'>高阶组件(HOC)</font>
+* 注意：这两种方式<font color='red'>不是新的API</font>，而是利用React自身特点的编码技巧，演化而成的固定模式（写法）
+
+## 4.3 纯组件
+* 说明：纯组件内部的对比是<font color='red'>shallow compare</font>(浅层对比)
+* 对于值类型来说: 比较两个值是否相同（直接赋值即可，没有坑）
+```
+   let number = 0
+   let newnumber = number
+   newnumber = 2
+   console.log(number === newnumber)  // false
+```
+```
+  state = {number : 0}
+  setState({
+    number: Math.floor(Math.random() * 3)
+  })
+  // PureComponent内部对比
+  最新的state.number === 上一次的state.number  // false，重新渲染组件 
+```
+* 对于<font color='red'>引用类型</font>来说: 只比较对象的引用（地址）是否相同
+
+```
+   const obj = {number: 0}
+   const newObj = obj
+   newObj.number = 2
+   console.log(obj === newObj)  // true 
+```
+```
+    state = {obj : {number: 0}}
+    // 错误做法
+    state.obj.number = 2
+    setState({obj: state.obj })
+    // pureComponent 内部比较:
+    最新的state.obj === 上一次的state.obj // true，不重新渲染组件
+```
+* 注意：<font color='red'>state或props中属性值为引用类型时，应该创建新数据，不要直接修改原数据！</font>
+```
+   // 正确
+   const newObj = {...state.obj, number: 2}
+   setState({obj: newObj})
+   
+   // 正确！创建新数据
+   // 不要用数组的push/ unshift等直接修改当前数组的方法
+   // 而应该用 concat 或 slice 等这些返回新数组的方法
+   this.setState({
+        list: [...this.state.list, {新数据}]
+   })
+```
