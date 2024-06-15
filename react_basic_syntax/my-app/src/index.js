@@ -1,9 +1,15 @@
 // 1 导入react
 import { StrictMode } from 'react';
 
+
 import React from 'react'
 import { createRoot } from "react-dom/client";
 import ReactDOM from 'react-dom'
+
+// 导入路由组件
+import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom'
+// import {HashRouter as Router, Route, Link, Routes} from 'react-router-dom'
+
 //引入css
 import './css/index.css'
 import Hello from "./Hello";
@@ -315,26 +321,26 @@ import ReactPrinciple from "./js/ReactPrinciple/reactPrinciple";
 //     }
 // }
 
-const obj = {number: 0}
-const newObj = obj
-newObj.number = 2
-console.log(obj === newObj)
+// const obj = {number: 0}
+// const newObj = obj
+// newObj.number = 2
+// console.log(obj === newObj)
 
-class App extends React.PureComponent {
-    state = {
-        obj: {
-            number: 0
-        }
-    }
+// class App extends React.PureComponent {
+//     state = {
+//         obj: {
+//             number: 0
+//         }
+//     }
 
-    handleClick = () => {
-        // 正确做法：创建新对象
-        const newObj = {...this.state.obj, number: Math.floor(Math.random() * 3)}
-        this.setState(() => {
-            return {
-                obj: newObj
-            }
-        })
+    // handleClick = () => {
+    //     // 正确做法：创建新对象
+    //     const newObj = {...this.state.obj, number: Math.floor(Math.random() * 3)}
+    //     this.setState(() => {
+    //         return {
+    //             obj: newObj
+    //         }
+    //     })
 
         // 错误演示： 直接修改原始对象中属性的值
         // const newObj = this.state.obj
@@ -345,7 +351,7 @@ class App extends React.PureComponent {
         //        obj: newObj
         //     }
         // })
-    }
+    // }
 
     // 因为两次生成的随机数可能相同, 如果相同, 此时, 不需要重新渲染
     // shouldComponentUpdate(nextProps, nextState, nextContext) {
@@ -365,40 +371,58 @@ class App extends React.PureComponent {
 
     // render 方法调用并不意味着浏览器中的重新渲染！！！
     // render 方法调用仅仅说明要进行diff
-    render() {
+//     render() {
+//
+//     console.log('render')
+//         const el =(
+//         <div>
+//             <NumberBox number={this.state.obj.number} />
+//             <button onClick={this.handleClick}>重新生成</button>
+//         </div>
+//         )
+//     console.log(el)
+//         return el
+// }
+//
+// }
 
-    console.log('render')
-        const el =(
-        <div>
-            <NumberBox number={this.state.obj.number} />
-            <button onClick={this.handleClick}>重新生成</button>
-        </div>
-        )
-    console.log(el)
-        return el
-}
-
-}
-
-class NumberBox extends React.Component {
-    shouldComponentUpdate(nextProps) {
-        console.log('最新props: ', nextProps, ', 当前props: ', this.props)
+// class NumberBox extends React.Component {
+//     shouldComponentUpdate(nextProps) {
+//         console.log('最新props: ', nextProps, ', 当前props: ', this.props)
         // 如果前后两次number值相同, 就返回false, 不更新组件
         // if (nextProps.number === this.props.number) {
         //     return false
         // }
         // return true
-        return nextProps.number !== this.props.number
-    }
-    render() {
-        console.log('子组件中的render')
-        return (
-            <div>
-                <h1>随机数: {this.props.number}</h1>
+    //     return nextProps.number !== this.props.number
+    // }
+//     render() {
+//         console.log('子组件中的render')
+//         return (
+//             <div>
+//                 <h1>随机数: {this.props.number}</h1>
+//
+//             </div>
+//         )
+// }}
 
-            </div>
-        )
-}}
+const First = () => <p>页面一的内容</p>
+
+// 使用Router组件包裹整个应用
+const App = () => (
+    <Router>
+        <div>
+            <h1>React路由基础</h1>
+            {/* 指定路由入口 */}
+            <Link to="/first">页面一</Link>
+
+            {/* 指定路由出口 */}
+            <Routes>
+                <Route path="/first" Component={First} ></Route>
+            </Routes>
+        </div>
+    </Router>
+)
 
 
 // 渲染React元素
@@ -437,4 +461,4 @@ root.render(
 // />)
 
 // no longer supported
-// ReactDOM.render(list, document.getElementById('root'))
+// ReactDOM.render(<App />, document.getElementById('root'))

@@ -615,3 +615,74 @@ children: [
 }
 }
 * 示例中，只更新p元素的文本节点内容
+# React原理揭秘
+1. 工作角度: 应用第一，原理第二
+2. 原理有助于更好地理解React的自身运行机制
+3. setState() 异步更新数据。
+4. 父组件更新导致子组件更新，纯组件提升性能。
+5. 思路清晰简单为前提，虚拟DOM和Diff保效率。
+6. 虚拟DOM -> state + JSX。
+7. 虚拟DOM的真正价值从来都不是性能。(它可以脱离浏览器环境来运行)
+
+# 1.React路由介绍
+## 现代的前端应用大多都是<font color='red'>SPA</font>（单页应用程序）,也就是只有一个HTML页面的应用程序。因为它的用户体验更好、对服务器压力更小，所以更受欢迎。为了有效的使用单个页面来管理原来多页面的功能，前端路由应运而生。
+* 前端路由的功能：让用户从一个视图（页面）导航到另一个视图（页面）
+* 前端路由是一套路由规则，在React中，是<font color='red'>URL路径</font>与<font color='red'>组件</font>的对应关系
+* 使用React路由简单来说，就是配置<font color='red'>路径</font>和<font color='red'>组件</font>（配对） 
+# 2. 路由的基本使用
+## 2.1 使用步骤
+1. 安装 yarn add react-router-dom
+2. 导入路由的三个核心组件：<font color='red'>Router</font>/<font color='red'>Route</font>/<font color='red'>Link</font>
+```
+    import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+```
+3. 使用<font color='red'>Router组件</font>包裹整个应用（重要）
+```
+   <Router>
+    <div className="App">
+        // ...省略页面内容
+    </div>
+   </Router>
+```
+4. 使用<font color='red'>Link组件</font>作为导航菜单（路由入口）
+### <Link <font color='red'>to="/first"</font>></Link>
+5. 使用Route组件配置路由规则和要展示的组件（路由出口）
+```
+   <Router>
+        <div>
+            <h1>React路由基础</h1>
+            {/* 指定路由入口 */}
+            <Link to="/first">页面一</Link>
+
+            {/* 指定路由出口 */}
+            <Routes>
+                <Route path="/first" Component={First} ></Route>
+            </Routes>
+        </div>
+    </Router>
+```
+## 2.2 常用组件说明
+* Router组件：包裹整个应用，一个React应用只需要<font color='red'>使用一次</font>
+* 两种常用Router: HashRouter和<font color='red'>BrowserRouter</font>
+* HashRouter: 使用URL的哈希值实现（localhost:3000/#/first）
+* (推荐)<font color='red'>BrowserRouter</font>: 使用H5的history API实现（localhost:3000/first）
+* Link 组件：用于指定导航链接（a标签）
+```
+    // to 属性: 浏览器地址栏中的pathname（location.pathname）
+    <Link to="/first">页面一</Link>
+```
+* Route组件：指定路由展示组件相关信息
+```
+    // path属性：路由规则
+    // component属性：展示的组件
+    // Route组件写在哪，渲染出来的组件就展示在哪
+    <Route path="/first" Component={First} ></Route>
+```
+
+
+
+
+
+
+
+
