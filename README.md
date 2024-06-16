@@ -689,6 +689,7 @@ children: [
 * 编程式导航：<font color='red'>通过js代码来实现页面跳转</font>
 * history是React路由提供的，用于获取<font color='red'>浏览器历史记录</font>的相关信息
 * <font color='red'>push(path): </font>跳转到某个页面，参数path表示要跳转的路径
+* <font color='red'>go(n): </font>前进或后退到某个页面，参数n表示前进或后退页面数量（比如：-1表示后退到上一页）
 ```
     class Login extends Component {
         handleLogin = () => {
