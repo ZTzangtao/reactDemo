@@ -678,6 +678,26 @@ children: [
     // Route组件写在哪，渲染出来的组件就展示在哪
     <Route path="/first" Component={First} ></Route>
 ```
+# 3. 路由的执行过程
+1. 点击Link组件（a标签）, 修改了浏览器地址栏中的url。
+2. React路由监听到地址栏url的变化。
+3. React路由内部遍历所有Route组件，使用路由规则（path）与pathname进行匹配。
+4. 当路由规则（path）能够匹配地址栏中的pathname时，就展示该Route组件的内容。
+
+# 4. 编程式导航
+* 场景: 点击登录按钮，登录成功后，通过代码跳转到后台首页，如何实现？
+* 编程式导航：<font color='red'>通过js代码来实现页面跳转</font>
+* history是React路由提供的，用于获取<font color='red'>浏览器历史记录</font>的相关信息
+* <font color='red'>push(path): </font>跳转到某个页面，参数path表示要跳转的路径
+```
+    class Login extends Component {
+        handleLogin = () => {
+            // ...
+            this.props.history.push('/home')
+        }
+        render() {...省略其他代码}
+    }
+```
 
 
 

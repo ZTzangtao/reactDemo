@@ -406,24 +406,60 @@ import ReactPrinciple from "./js/ReactPrinciple/reactPrinciple";
 //         )
 // }}
 
-const First = () => <p>页面一的内容</p>
+//const First = () => <p>页面一的内容</p>
+//const Home = () => <h2>这是home组件的内容</h2>
 
 // 使用Router组件包裹整个应用
+//const App = () => (
+//    <Router>
+//        <div>
+//            <h1>React路由基础</h1>
+//            {/* 指定路由入口 */}
+//            <Link to="/first">页面一</Link>
+//            <br />
+//            <Link to="/home">首页</Link>
+//
+//            {/* 指定路由出口 */}
+//            <Routes>
+//                <Route path="/first" Component={First} ></Route>
+//                <Route path="/home" Component={Home} ></Route>
+//            </Routes>
+//        </div>
+//    </Router>
+//)
+class Login extends React.Component {
+    render () {
+        return (
+            <div>
+                <p>登录页面</p>
+                <button>登录</button>
+            </div>
+        )
+    }
+}
+
+const Home = () => {
+    return(
+        <div>
+              <h2>我是后台首页</h2>
+        </div>
+    )
+}
+
 const App = () => (
     <Router>
         <div>
-            <h1>React路由基础</h1>
-            {/* 指定路由入口 */}
-            <Link to="/first">页面一</Link>
-
-            {/* 指定路由出口 */}
-            <Routes>
-                <Route path="/first" Component={First} ></Route>
-            </Routes>
+            <h1>编程示导航: </h1>
+            <Link to="/login">去登录页面</Link>
+            <br />
+            <Link to="/home">首页</Link>
+//             <Routes>
+                     <Route path="/login" component={Login} />
+                     <Route path="/home" component={Home} />
+//             </Routes>
         </div>
     </Router>
 )
-
 
 // 渲染React元素
 // new
@@ -437,9 +473,10 @@ const root = createRoot(container)
 // root.render(<CreateCycle />)
 // root.render(<UpdateCycle />)
 root.render(
-    <StrictMode>
+//    <StrictMode>
     <App />
-        </StrictMode>)
+//        </StrictMode>
+        )
 // root.render(<PropsValidDemo colors={['red','blue']}
 //         fn={() => {}}
 //                             pageSize={20}
