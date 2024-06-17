@@ -7,7 +7,9 @@ import { createRoot } from "react-dom/client";
 import ReactDOM from 'react-dom'
 
 // 导入路由组件
-import {BrowserRouter as Router, Route, Link, Routes, useHistory} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
+
 // import {HashRouter as Router, Route, Link, Routes} from 'react-router-dom'
 
 //引入css
@@ -427,30 +429,33 @@ import ReactPrinciple from "./js/ReactPrinciple/reactPrinciple";
 //        </div>
 //    </Router>
 //)
-const history = useHistory()
-class Login extends React.Component {
-    handleLogin = () => {
 
-        console.log( this.props)
-        // 使用编程式导航实现路由跳转
-        // ... 省略其他功能代码
-       history.push('/home')
+
+function Login() {
+
+    const navigate = useNavigate()
+    const handleClick = () => {
+        navigate('/home')
     }
 
-    render () {
         return (
             <div>
                 <p>登录页面</p>
-                <button onClick={this.handleLogin}>登录</button>
+                <button onClick={handleClick}>登录</button>
+
             </div>
         )
-    }
 }
 
 const Home = () => {
+    const navigate = useNavigate()
+    const handleBack = () => {
+        navigate(-1);
+    }
     return(
         <div>
               <h2>我是后台首页</h2>
+              <button onClick={handleBack}>返回登录页按钮</button>
         </div>
     )
 }
@@ -462,8 +467,8 @@ const App = () => (
             <Link to="/login">去登录页面</Link>
             <br />
             <Routes>
-                     <Route path='/login' Component={Login} />
-                     <Route path='/home' Component={Home} />
+                     <Route path='/login' element={<Login />} />
+                     <Route path='/home' element={<Home />} />
              </Routes>
         </div>
     </Router>

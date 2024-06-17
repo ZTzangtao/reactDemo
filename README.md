@@ -695,6 +695,14 @@ children: [
         handleLogin = () => {
             // ...
             this.props.history.push('/home')
+            // 或者    const navigate = useNavigate()
+            const handleClick = () => {
+            navigate('/home')
+              const navigate = useNavigate()
+            const handleBack = () => {
+            navigate(-1);
+    }
+    }
         }
         render() {...省略其他代码}
     }
