@@ -467,6 +467,9 @@ const App = () => (
             <Link to="/login">去登录页面</Link>
             <br />
             <Routes>
+            // 默认路由
+                     <Route path='/' element={<Home />} />
+
                      <Route path='/login' element={<Login />} />
                      <Route path='/home' element={<Home />} />
              </Routes>

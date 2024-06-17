@@ -707,7 +707,13 @@ children: [
         render() {...省略其他代码}
     }
 ```
-
+# 5. 默认路由
+* 问题: 现在的路由都是点击导航菜单后展示的，如何在进入页面的时候就展示呢？
+* 默认路由: 表示<font color='red'>进入页面时就会匹配的路由</font>
+* 默认路由path为: <font color='red'>/</font>
+```
+    <Route path="/" component={Home} />
+```
 
 
 
