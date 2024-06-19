@@ -714,9 +714,30 @@ children: [
 ```
     <Route path="/" component={Home} />
 ```
+# 6. 匹配模式
+## 6.1 模糊匹配模式
+* 问题：当Link组件的to属性值为"/login"时，为什么默认路由也被匹配成功？
 
-
-
+```
+    <Link to="/login">登录页面</Link>
+    <Route path='/home' element={<Home />} /> // 匹配成功
+     
+    // path 代表Route组件的path属性
+    // pathname 代表Link组件的to属性(也就是location.pathname)
+```
+|  path  |          能够匹配的pathname           |
+|:------:|:--------------------------------:|
+|   /    |            所有pathname            |
+| /first | /first或/first/a或者/first/a/b...   |
+## 6.2 精确匹配
+* 问题：默认路由任何情况下都会展示，如何避免这种问题？
+* 给Route组件添加 <font color='red'>exact</font>属性，让其变为 <font color='red'>精确匹配模式</font>
+* 精确匹配：只有当<font color='red'>path</font>和<font color='red'>pathname</font>完全匹配时才会展示该路由
+```
+    // 此时，该组件只能匹配pathname="/"这一种情况
+    <Route exact path="/" component=... />
+```
+* 推荐：给默认路由添加<font color='red'>exact</font>属性
 
 
 

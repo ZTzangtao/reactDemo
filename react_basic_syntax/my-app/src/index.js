@@ -431,34 +431,37 @@ import ReactPrinciple from "./js/ReactPrinciple/reactPrinciple";
 //)
 
 
-function Login() {
+//function Login() {
+//
+//    const navigate = useNavigate()
+//    const handleClick = () => {
+//        navigate('/home')
+//    }
+//
+//        return (
+//            <div>
+//                <p>登录页面</p>
+//                <button onClick={handleClick}>登录</button>
+//
+//            </div>
+//        )
+//}
 
-    const navigate = useNavigate()
-    const handleClick = () => {
-        navigate('/home')
-    }
+//const Home = () => {
+//    const navigate = useNavigate()
+//    const handleBack = () => {
+//        navigate(-1);
+//    }
+//    return(
+//        <div>
+//              <h2>我是后台首页</h2>
+//              <button onClick={handleBack}>返回登录页按钮</button>
+//        </div>
+//    )
+//}
 
-        return (
-            <div>
-                <p>登录页面</p>
-                <button onClick={handleClick}>登录</button>
-
-            </div>
-        )
-}
-
-const Home = () => {
-    const navigate = useNavigate()
-    const handleBack = () => {
-        navigate(-1);
-    }
-    return(
-        <div>
-              <h2>我是后台首页</h2>
-              <button onClick={handleBack}>返回登录页按钮</button>
-        </div>
-    )
-}
+const Home = () => <p>我是Home组件内容 </p>
+const Login = () => <p>我是Login组件内容 </p>
 
 const App = () => (
     <Router>
@@ -468,10 +471,11 @@ const App = () => (
             <br />
             <Routes>
             // 默认路由
-                     <Route path='/' element={<Home />} />
+//                     <Route path='/' element={<Home />} />
 
-                     <Route path='/login' element={<Login />} />
-                     <Route path='/home' element={<Home />} />
+                     <Route exact path='/' element={<Login />} ></Route>
+                     <Route path='/login' element={<Login />} ></Route>
+
              </Routes>
         </div>
     </Router>
